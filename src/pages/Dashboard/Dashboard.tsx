@@ -1,12 +1,28 @@
-import * as React from 'react';
+import * as React from "react";
 
-export interface IDashboardProps {
-}
+import { Row, Col } from "antd";
 
-export default function Dashboard (props: IDashboardProps) {
+// components
+import Menu from "../../components/Menu";
+
+import Profile from "./Profile/Profile";
+
+import "./style.css";
+
+const Dashboard: React.FC = ({ children }) => {
   return (
-    <div>
-      Dashboard
-    </div>
+    <Row>
+      <Col span={6}>
+        <div className="menu">
+          <Profile />
+          <Menu />
+        </div>
+      </Col>
+      <Col span={18}>
+        {children}
+      </Col>
+    </Row>
   );
-}
+};
+
+export default Dashboard;

@@ -1,0 +1,9 @@
+.menu {
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: .5fr 3fr;
+  
+  border-right: 1px solid #ccc;
+  padding: 0 15px;
+}

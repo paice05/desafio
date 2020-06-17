@@ -1,0 +1,19 @@
+.container-profile {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.container-profile div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-profile div:nth-child(2) {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container-profile h2 {
+  margin: 0;
+}

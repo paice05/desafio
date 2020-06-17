@@ -1,7 +1,30 @@
-.dashboard-container {
-  width: 100%;
-  height: 100vh;
+.content-home {
+  margin: 15px;
+  height: calc(100vh - 30px);
 
-  display: grid;
-  grid-template-columns: .5fr 3fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+}
+
+.content-home section:nth-child(1) {
+  height: 400px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.content-home section:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.content-home section:nth-child(1) div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 500px;
 }

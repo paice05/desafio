@@ -12,13 +12,13 @@ import "./style.css";
 const Dashboard: React.FC = ({ children }) => {
   return (
     <Row>
-      <Col span={6}>
+      <Col span={5}>
         <div className="menu">
           <Profile />
           <Menu />
         </div>
       </Col>
-      <Col span={18}>
+      <Col span={19}>
         {children}
       </Col>
     </Row>

@@ -3,15 +3,17 @@ import * as React from "react";
 import { Menu } from "antd";
 import { useHistory } from "react-router-dom";
 
+import { FiHome, FiUser, FiSettings, FiInfo } from 'react-icons/fi'
+
 // import history from "../../utils/history";
 
 import "./style.css";
 
 const items = [
-  { name: "Home", path: "/" },
-  { name: "Users", path: "/users" },
-  { name: "Suport", path: "/suport" },
-  { name: "Config", path: "/config" },
+  { name: "Home", path: "/", icon: <FiHome /> },
+  { name: "Users", path: "/users", icon: <FiUser /> },
+  { name: "Suport", path: "/suport", icon: <FiInfo /> },
+  { name: "Config", path: "/config", icon: <FiSettings /> },
 ];
 
 export default function MenuBar() {
@@ -28,7 +30,7 @@ export default function MenuBar() {
         {items.map((item, index) => (
           <Menu.Item key={index} onClick={() => history.push(item.path)}>
             {/* <Icon type="mail" /> */}
-            {item.name}
+            {item.icon} {item.name}
           </Menu.Item>
         ))}
       </Menu>

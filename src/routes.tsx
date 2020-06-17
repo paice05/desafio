@@ -1,10 +1,6 @@
 import * as React from "react";
 
-import { Router } from "react-router";
-import { Switch, Route } from "react-router-dom";
-
-// utils
-import history from "./utils/history";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 // pages
 import Dashboard from "./pages/Dashboard";
@@ -12,15 +8,35 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
 
+interface PropsLayout {
+  component: any;
+  path: string;
+  exact?: boolean;
+}
+
+const DashboardLayout: React.FC<PropsLayout> = ({
+  component: Component,
+  ...rest
+}) => {
+  return (
+    <Route
+      {...rest}
+      render={(matchProps) => (
+        <Dashboard>
+          <Component {...matchProps} />
+        </Dashboard>
+      )}
+    />
+  );
+};
+
 export default function Routes() {
   return (
-    <Dashboard>
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/users" component={Users} />
-        </Switch>
-      </Router>
-    </Dashboard>
+    <Router>
+      <Switch>
+        <DashboardLayout path="/users" component={Users} />
+        <DashboardLayout exact path="/" component={Home} />
+      </Switch>
+    </Router>
   );
 }

@@ -1,8 +1,9 @@
 import * as React from "react";
 
 import { Menu } from "antd";
+import { useHistory } from "react-router-dom";
 
-import history from "../../utils/history";
+// import history from "../../utils/history";
 
 import "./style.css";
 
@@ -14,6 +15,8 @@ const items = [
 ];
 
 export default function MenuBar() {
+  const history = useHistory();
+
   return (
     <div className="content-menu">
       <Menu

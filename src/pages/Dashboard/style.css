@@ -2,8 +2,33 @@
   height: 100vh;
 
   display: grid;
-  grid-template-rows: .5fr 3fr;
-  
+  grid-template-rows: 0.5fr 3fr;
+
   border-right: 1px solid #ccc;
   padding: 0 15px;
+}
+
+@media (max-width: 992px) {
+  .menu {
+    height: 300px;
+  }
+  .content-home section {
+    flex-direction: column;
+    height: 0;
+  }
+
+  .content-home section:nth-child(1) {
+    height: 510px;
+    max-width: none;
+    align-items: center;
+  }
+
+  /* .content-home section:nth-child(1) button {
+    width: 200px;
+  } */
+
+  .content-home img {
+    width: 100%;
+    height: 300px;
+  }
 }

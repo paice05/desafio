@@ -3,7 +3,7 @@ import * as React from "react";
 import { Menu } from "antd";
 import { useHistory } from "react-router-dom";
 
-import { FiHome, FiUser, FiSettings, FiInfo } from 'react-icons/fi'
+import { FiHome, FiAirplay, FiSettings, FiInfo } from 'react-icons/fi'
 
 // import history from "../../utils/history";
 
@@ -11,7 +11,7 @@ import "./style.css";
 
 const items = [
   { name: "Home", path: "/", icon: <FiHome /> },
-  { name: "Users", path: "/users", icon: <FiUser /> },
+  { name: "Panel", path: "/panel", icon: <FiAirplay /> },
   { name: "Suport", path: "/suport", icon: <FiInfo /> },
   { name: "Config", path: "/config", icon: <FiSettings /> },
 ];

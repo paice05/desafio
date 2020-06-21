@@ -1,12 +1,17 @@
 import * as React from "react";
 
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router,
+  Redirect,
+} from "react-router-dom";
 
 // pages
 import Dashboard from "./pages/Dashboard";
 
 import Home from "./pages/Home";
-import Users from "./pages/Users";
+import Panel from "./pages/Panel";
 
 interface PropsLayout {
   component: any;
@@ -34,8 +39,9 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        <DashboardLayout path="/users" component={Users} />
         <DashboardLayout exact path="/" component={Home} />
+        <DashboardLayout path="/Panel" component={Panel} />
+        <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
     </Router>
   );

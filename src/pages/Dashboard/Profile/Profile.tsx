@@ -6,14 +6,12 @@ import "./style.css";
 
 export default function Profile() {
   return (
-    <div className="container-profile">
+    <section className="container-profile">
+      <Avatar size={64} icon="user" />
       <div>
-        <Avatar size={64} icon="user" />
-      </div>
-      <div>
-        <h2> Matheus Paice  </h2>
+        <h2> Matheus Paice </h2>
         <span> Online </span>
       </div>
-    </div>
+    </section>
   );
 }

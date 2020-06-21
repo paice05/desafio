@@ -1,17 +1,17 @@
 .content-menu {
-  position: relative;
-}
-
-.content-menu footer {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
+.content-menu footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
 .content-menu footer p {
   margin: 0;
 }

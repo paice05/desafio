@@ -1,48 +1,33 @@
 import * as React from "react";
 
-import { Table } from "antd";
+import { Tabs } from "antd";
 
 import "./style.css";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    width: 150,
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    width: 150,
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-  },
-];
+import Users from "./Users";
+import Ranges from "./Ranges";
+import Search from "./Search";
 
-const data: any = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
+const Panel: React.FC = () => {
+  const { TabPane } = Tabs;
 
-export default function Panel() {
+  const handleCallback = () => {
+    console.log("callback");
+  };
+
   return (
-    <div className="content-panel">
-      <section>Welcome Panel</section>
-      <section>
-        <Table
-          columns={columns}
-          dataSource={data}
-          style={{ overflowY: "auto", height: 670 }}
-        />
-        ,
-      </section>
-    </div>
+    <Tabs className="container-panel" defaultActiveKey="1" onChange={handleCallback}>
+      <TabPane tab="Graphics" key="1">
+        <Ranges />
+      </TabPane>
+      <TabPane tab="Users" key="2">
+        <Users />
+      </TabPane>
+      <TabPane tab="Search" key="3">
+        <Search />
+      </TabPane>
+    </Tabs>
   );
-}
+};
+
+export default Panel;

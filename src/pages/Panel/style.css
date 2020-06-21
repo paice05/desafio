@@ -1,9 +1,4 @@
-.content-panel {
-  margin: 15px;
-  height: calc(100vh - 30px);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.container-panel {
+  margin: 30px !important;
+  height: calc(100vh - 60px);
 }
-

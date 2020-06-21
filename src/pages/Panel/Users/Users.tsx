@@ -36,7 +36,6 @@ for (let i = 0; i < 100; i++) {
 const Users: React.FC<Props> = (props) => {
   return (
     <div className="container-users">
-      <section>Welcome Panel</section>
       <section>
         <Table
           columns={columns}

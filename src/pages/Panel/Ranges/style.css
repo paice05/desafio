@@ -1,0 +1,13 @@
+.container-ranges {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-ranges .totals {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -1,44 +1,139 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Desafio para a vaga de Front-End
 
-## Available Scripts
+Como parte do processo seletivo, usaremos este desafio para avaliar suas habilidades com os requisitos da vaga. 
 
-In the project directory, you can run:
+O teste prático deverá ser feito por você, em sua casa até o prazo limite de **19/06/2020**.
 
-### `yarn start`
+## Como entregar o desafio?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ - Faça um fork deste projeto em sua conta no [Github](https://github.com/join) (crie uma se você não possuir). 
+ - Em seguida, desenvolva o projeto conforme os telas da pasta layouts em seu próprio fork. 
+ - Por fim, envie todo o código para o seu fork no Github e envie um pull request para este repositório original.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Descrição do projeto
 
-### `yarn test`
+Nosso desafio consiste em implementar uma aplicação client-side que consulte a API e retorne os dados para serem mostrados no painel.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O usuário deverá ser capaz de realizar uma busca consumindo os dados da API como mostrado nos layouts fornecidos.
 
-### `yarn build`
+### API
+```url
+https://desafio.eadplataforma.com/api/1
+```
+### Acesso
+```
+Authorization: 123456789
+```
+### Endpoints
+```
+GET /api/1/users
+```
+```json
+{
+    "total": 2,
+    "limit": 10,
+    "offset": 0,
+    "rows": 2,
+    "users": [
+	        {
+	            "id": "1",
+	            "name": "Ronaldo Abreu",
+	            "email": "ronaldo.abreu@meusite.com.br",
+	            "phone": "(14) 99745-1234",
+	            "amount": "251.59",
+	            "photo_url": "https://desafio.eadplataforma.com/front/assets/ronaldo.jpg",
+	            "status": "1"
+	        },
+	        {
+	            "id": "2",
+	            "name": "Geovane Felix",
+	            "email": "geovane.felix@meusite.com.br",
+	            "phone": "(14) 99745-5678",
+	            "amount": "265.59",
+	            "photo_url": "https://desafio.eadplataforma.com/front/assets/geovane.jpg",
+	            "status": "0"
+	        }
+	]
+}
+```
+```
+GET /api/1/search?q={query}
+```
+```json
+{
+    "total": 2,
+    "limit": 10,
+    "offset": 0,
+    "rows": 2,
+    "search": [
+	        {
+	            "id": "1",
+	            "name": "Ronaldo Abreu",
+	            "email": "ronaldo.abreu@meusite.com.br",
+	            "phone": "(14) 99745-1234",
+	            "amount": "251.59",
+	            "photo_url": "https://desafio.eadplataforma.com/front/assets/ronaldo.jpg",
+	            "status": "1"
+	        },
+	        {
+	            "id": "2",
+	            "name": "Geovane Felix",
+	            "email": "geovane.felix@meusite.com.br",
+	            "phone": "(14) 99745-5678",
+	            "amount": "265.59",
+	            "photo_url": "https://desafio.eadplataforma.com/front/assets/geovane.jpg",
+	            "status": "0"
+	        }
+	]
+}
+```
+```
+GET /api/1/profile/:id
+```
+```json
+{
+    "id": "1",
+    "name": "Ronaldo Abreu",
+    "email": "ronaldo.abreu@meusite.com.br",
+    "phone": "(14) 99745-1234",
+    "amount": "251.59",
+    "photo_url": "https://desafio.eadplataforma.com/front/assets/ronaldo.jpg",
+    "status": "1"
+}
+```
+```
+status: 0 = Adimplente / 1 = Inadimplente
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Paginação
+```
+GET /api/1/users?offset=10 = Indica o início da leitura à partir do registro 10.
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Diretrizes
+- Seguir as [instruções de desenvolvimento](https://github.com/eadplataforma/desafio/blob/master/layouts/instrucoes.txt);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Utilize [ReactJS](https://reactjs.org/) como Framework JavaScript;
 
-### `yarn eject`
+- Faça o uso de componentes de forma genérica e escalável;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Utilize algum pré-processador para o seu css, de preferência [SASS](https://sass-lang.com/).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Faça com que sua página tenha uma ótima experiência para o usuário, independente do dispositivo que ele esteja usando;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Utilize um código limpo e bem organizado, e de preferência, utilize alguma arquitetura modular para organizar seus arquivos CSS/SASS e os assets utilizados;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Documente seu projeto.
 
-## Learn More
+### Desejável
+- Utilizar [ReduxJS](https://redux.js.org/) para controle de estado dos componentes;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Utilizar a lib [Ant Design 3x](https://3x.ant.design) para construção dos componentes necessários.
+  
+### Avaliação
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Seu projeto será avaliado de acordo com a qualidade do seu código e sua organização com os arquivos utilizados, além do conhecimento e bom uso da semântica HTML e CSS.
+
+Finalizando, comunique o e-mail jobs@eadplataforma.com sobre sua participação no desafio com o endereço da sua conta no github e seu curriculum em anexo para a próxima etapa da seleção.
+
+Boa sorte!

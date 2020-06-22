@@ -1,6 +1,9 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 
 import { Tabs } from "antd";
+import { useDispatch } from "react-redux";
+
+import actionsUsers from "../../store/ducks/users/actions";
 
 import "./style.css";
 
@@ -9,14 +12,23 @@ import Ranges from "./Ranges";
 import Search from "./Search";
 
 const Panel: React.FC = () => {
+  const dispatch = useDispatch();
   const { TabPane } = Tabs;
+
+  useEffect(() => {
+    dispatch(actionsUsers.load());
+  }, [dispatch]);
 
   const handleCallback = () => {
     console.log("callback");
   };
 
   return (
-    <Tabs className="container-panel" defaultActiveKey="1" onChange={handleCallback}>
+    <Tabs
+      className="container-panel"
+      defaultActiveKey="1"
+      onChange={handleCallback}
+    >
       <TabPane tab="Graphics" key="1">
         <Ranges />
       </TabPane>

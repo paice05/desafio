@@ -1,11 +1,10 @@
 import * as React from "react";
 
 import { Button, Card } from "antd";
-
 import { FiMoreVertical, FiThumbsUp, FiStar } from "react-icons/fi";
 
+// assets
 import Logo from "../../assets/img/teaching.svg";
-
 import "./style.css";
 
 const Home: React.FC = ({ children }) => {
@@ -31,14 +30,10 @@ const Home: React.FC = ({ children }) => {
         {[1, 2, 3, 4].map((item) => (
           <Card
             key={item}
-            style={{ width: '100%', margin: '0 7px' }}            
+            style={{ width: "100%", margin: "0 7px" }}
             actions={[<FiThumbsUp />, <FiStar />, <FiMoreVertical />]}
           >
-            <Meta
-              
-              title="Card title"
-              description="This is the description"
-            />
+            <Meta title="Card title" description="This is the description" />
           </Card>
         ))}
       </section>

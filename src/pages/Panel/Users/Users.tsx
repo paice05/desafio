@@ -1,7 +1,14 @@
 import React from "react";
 
 import { Table } from "antd";
+import { useSelector } from "react-redux";
 
+// store
+import { ApplicationState } from "../../../store";
+// ducks
+import { User } from "../../../store/ducks/users/types";
+import { getElements } from "../../../store/ducks/resource/selectors";
+// assets
 import "./style.css";
 
 interface Props {}
@@ -10,40 +17,32 @@ const columns = [
   {
     title: "Name",
     dataIndex: "name",
-    width: 150,
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    width: 150,
+    title: "Email",
+    dataIndex: "email",
   },
   {
-    title: "Address",
-    dataIndex: "address",
+    title: "Phone",
+    dataIndex: "phone",
   },
 ];
 
-const data: any = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
-
 const Users: React.FC<Props> = (props) => {
+  const data: User[] = useSelector((state: ApplicationState) =>
+    getElements(state.users)
+  );
+
   return (
     <div className="container-users">
-      <section>
-        <Table
-          columns={columns}
-          dataSource={data}
-          style={{ overflowY: "auto", height: 670 }}
-        />
-        ,
-      </section>
+      <Table
+        columns={columns}
+        dataSource={data.map((item) => ({
+          ...item,
+          key: item.id,
+        }))}
+        style={{ overflowY: "auto", height: 670 }}
+      />
     </div>
   );
 };

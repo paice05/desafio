@@ -1,49 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Collapse, Avatar, Input } from "antd";
+import { Collapse, Input } from "antd";
+import { useSelector } from "react-redux";
 
-const { Search } = Input;
-const { Panel } = Collapse;
+// component
+import Avatar from "../../../components/Avatar";
+// store
+import { ApplicationState } from "../../../store";
+// ducks
+import { User } from "../../../store/ducks/users/types";
+import { getElements } from "../../../store/ducks/resource/selectors";
+// assets
+import "./style.css";
 
 interface Props {}
 
 const SearchUsers: React.FC<Props> = (props) => {
+  const { Search } = Input;
+  const { Panel } = Collapse;
+
+  const [usersFiltered, setUserFiltered] = useState<User[]>([]);
+
+  const data: User[] = useSelector((state: ApplicationState) =>
+    getElements(state.users)
+  );
+
+  const handleSearch = (value: string) => {
+    let temp: User[] = [];
+
+    if (value) {
+      temp = data.filter((item) => {
+        const lc = item.name.toLowerCase();
+        const filterData = value.toLowerCase();
+        console.log(lc);
+        return lc.includes(filterData);
+      });
+
+      if (temp.length) {
+        setUserFiltered(temp);
+      } else {
+        setUserFiltered([]);
+      }
+    } else {
+      setUserFiltered([]);
+    }
+  };
+
   return (
-    <div>
+    <div className="container-search">
       <Search
-        placeholder="input search text"
-        onSearch={(value) => console.log(value)}
-        style={{ marginBottom: '14px' }}
+        placeholder="search for a user"
+        onSearch={handleSearch}
+        style={{ marginBottom: "14px" }}
       />
       <Collapse bordered={false}>
-        <Panel header="Ronaldo Abreu" key="1">
-          <Avatar />
-          <div>
-            "id": "2" <br />
-            "name": "Geovane Felix" <br />
-            "email": "geovane.felix@meusite.com.br" <br />
-            "phone": "(14) 99745-5678" <br />
-            "amount": "265.59" <br />
-            "photo_url":
-            "https:\/\/desafio.eadplataforma.com\/front\/assets\/geovane.jpg"{" "}
-            <br />
-            "status": "0" <br />
-          </div>
-        </Panel>
-        <Panel header="Ronaldo Abreu" key="2">
-          <Avatar />
-          <div>
-            "id": "2" <br />
-            "name": "Geovane Felix" <br />
-            "email": "geovane.felix@meusite.com.br" <br />
-            "phone": "(14) 99745-5678" <br />
-            "amount": "265.59" <br />
-            "photo_url":
-            "https:\/\/desafio.eadplataforma.com\/front\/assets\/geovane.jpg"{" "}
-            <br />
-            "status": "0" <br />
-          </div>
-        </Panel>
+        {usersFiltered.length &&
+          usersFiltered.map((user) => (
+            <Panel header={user.name} key={user.id}>
+              <Avatar path={user.photo_url} />
+              <div>
+                "id": {user.id} <br />
+                "name": {user.name} <br />
+                "email": {user.email} <br />
+                "phone": {user.email} <br />
+                "amount": {user.amount} <br />
+                "photo_url": {user.photo_url} <br />
+                "status": {user.status} <br />
+              </div>
+            </Panel>
+          ))}
       </Collapse>
     </div>
   );

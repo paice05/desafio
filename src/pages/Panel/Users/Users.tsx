@@ -8,12 +8,19 @@ import { ApplicationState } from "../../../store";
 // ducks
 import { User } from "../../../store/ducks/users/types";
 import { getElements } from "../../../store/ducks/resource/selectors";
+// components
+import Avatar from "../../../components/Avatar";
 // assets
 import "./style.css";
 
 interface Props {}
 
 const columns = [
+  {
+    title: "Avatar",
+    dataIndex: "avatar",
+    width: '20px'
+  },
   {
     title: "Name",
     dataIndex: "name",
@@ -39,9 +46,9 @@ const Users: React.FC<Props> = (props) => {
         columns={columns}
         dataSource={data.map((item) => ({
           ...item,
+          avatar: <Avatar path={item.photo_url} />,
           key: item.id,
         }))}
-        style={{ overflowY: "auto", height: 670 }}
       />
     </div>
   );

@@ -26,14 +26,12 @@ const SearchUsers: React.FC<Props> = (props) => {
   );
 
   const handleSearch = (value: string) => {
-    let temp: User[] = [];
-
     if (value) {
-      temp = data.filter((item) => {
-        const lc = item.name.toLowerCase();
+      const temp = data.filter((item) => {
+        const itemName = item.name.toLowerCase();
+        const itemEmail = item.email.toLowerCase();
         const filterData = value.toLowerCase();
-        console.log(lc);
-        return lc.includes(filterData);
+        return itemName.includes(filterData) || itemEmail.includes(filterData);
       });
 
       if (temp.length) {

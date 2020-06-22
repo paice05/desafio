@@ -35,7 +35,7 @@ export default function MenuBar() {
         ))}
       </Menu>
       <footer>
-        Power By &nbsp;<p style={{ color: "#1890ff" }}> Matheus Paice </p>{" "}
+        Power By &nbsp;<a href="https://github.com/paice05" target="blank" style={{ color: "#1890ff" }}> Matheus Paice </a>{" "}
       </footer>
     </div>
   );

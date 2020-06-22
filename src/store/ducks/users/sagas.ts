@@ -21,5 +21,5 @@ function* findManyUsers() {
 }
 
 export default {
-  findManyUsers
+  findManyUsers,
 };

@@ -1,12 +1,10 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo } from "react";
 
-import { PieChart, Pie, Sector, Cell, Legend } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 import { useSelector } from "react-redux";
 
 // store
 import { ApplicationState } from "../../../store";
-// duck
-import { User } from "../../../store/ducks/users/types";
 // selectos
 import { getElements } from "../../../store/ducks/resource/selectors";
 // assets
@@ -28,6 +26,7 @@ const Ranges: React.FC<Props> = (props) => {
     getElements(state.users)
   );
 
+  // sum totals
   const collectedTotal = useMemo(() => {
     const processDataTotal = users.reduce(
       (previousValue: ResponseTotal, currentValue: any) => {
@@ -42,6 +41,7 @@ const Ranges: React.FC<Props> = (props) => {
     return processDataTotal;
   }, [users]);
 
+  // create data for graphics ({ name, value })
   const data = useMemo(() => {
     const processData = users
       .reduce((previousValue: ResponseData[], currentValue: any) => {
@@ -71,7 +71,10 @@ const Ranges: React.FC<Props> = (props) => {
   return (
     <div className="container-ranges">
       <span className="totals"> Total de clientes: {users.length} </span>
-      <span className="totals-collected"> Total arrecadado: {collectedTotal.toFixed(2)} </span>
+      <span className="totals-collected">
+        {" "}
+        Total arrecadado: {collectedTotal.toFixed(2)}{" "}
+      </span>
       <PieChart width={500} height={600}>
         <Pie data={data} label dataKey="value">
           {data.map((entry, index) => (

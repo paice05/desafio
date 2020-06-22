@@ -25,6 +25,7 @@ const SearchUsers: React.FC<Props> = (props) => {
     getElements(state.users)
   );
 
+  // search user of name and email
   const handleSearch = (value: string) => {
     if (value) {
       const temp = data.filter((item) => {

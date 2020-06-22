@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { Menu } from "antd";
 import { useHistory } from "react-router-dom";
-
-import { FiHome, FiAirplay, FiSettings, FiInfo } from 'react-icons/fi'
+// icons
+import { FiHome, FiAirplay, FiSettings, FiInfo } from "react-icons/fi";
 
 // import history from "../../utils/history";
 

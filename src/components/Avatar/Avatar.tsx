@@ -4,7 +4,7 @@ import { Avatar } from "antd";
 
 interface Props {
   path?: string;
-  size?: number
+  size?: number;
 }
 
 const AvatarDefault: React.FC<Props> = ({ path = "", size = 64 }) => {

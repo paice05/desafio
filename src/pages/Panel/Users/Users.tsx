@@ -19,7 +19,7 @@ const columns = [
   {
     title: "Avatar",
     dataIndex: "avatar",
-    width: '20px'
+    width: "20px",
   },
   {
     title: "Name",

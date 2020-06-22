@@ -6,8 +6,8 @@ interface ActionLoadUsers {
 interface ActionCreateUsers {
   type: string;
   payload: {
-    name: string
-  }
+    name: string;
+  };
 }
 
 interface Actions {
@@ -22,9 +22,9 @@ const actionsUsers: Actions = {
   create: (name: string) => ({
     type: TypesUsers.CREATE,
     payload: {
-      name
-    }
-  })
+      name,
+    },
+  }),
 };
 
 export default actionsUsers;
